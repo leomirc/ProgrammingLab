@@ -63,8 +63,10 @@ class LinearModel:
             
         self.train_data = train_data
 
+
     def compute_y(self, x, m, q):
         return m * x + q
+
 
     def predict(self, xs):
         
