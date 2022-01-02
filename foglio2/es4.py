@@ -25,19 +25,9 @@ class LinearModel:
         self.train_data = None
 
 
-    def compute_corrected_std(self, data):
-        sum = 0
-        mean = np.mean(data)
-        for n in data: sum += pow(n - mean, 2)
-        std = math.sqrt(sum / (len(data)-1))
-        return std
-
-
     def compute_angular_coeff(self, xs, ys):
         corrcoef = np.corrcoef(xs, ys)[0,1]
-        sx = self.compute_corrected_std(xs)
-        sy = self.compute_corrected_std(ys)
-        m = corrcoef * (sy / sx)
+        m = corrcoef * (np.std(ys) / np.std(xs))
         return m
 
 
